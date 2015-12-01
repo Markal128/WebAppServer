@@ -1,0 +1,10 @@
+{
+  "name": "appServer",
+  "version": "0.0.0",
+  "description": "appServer",
+  "main": "app.js",
+  "author": {
+    "name": "qiudeng",
+    "email": ""
+  }
+}

@@ -1,0 +1,8 @@
+{
+	"web": {
+		"name": "appServer",
+		"type": "http",
+		"port": 9100,
+		"host": "127.0.0.1"
+	}
+}
