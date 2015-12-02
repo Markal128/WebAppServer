@@ -1,4 +1,14 @@
 {
-  "name": "application-name",
-  "version": "0.0.1"
+  "name": "appServer",
+  "version": "0.0.0",
+  "description": "appServer",
+  "main": "app.js",
+  "author": {
+    "name": "markal",
+    "email": ""
+  },
+  "dependencies": {
+	"express": "*",
+	"body-parser": "*"
+  }
 }

@@ -4,7 +4,11 @@
   "description": "appServer",
   "main": "app.js",
   "author": {
-    "name": "qiudeng",
+    "name": "markal",
     "email": ""
+  },
+  "dependencies": {
+	"express": "*",
+	"body-parser": "*"
   }
 }
