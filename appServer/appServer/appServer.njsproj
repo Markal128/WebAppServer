@@ -42,13 +42,16 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <TypeScriptCompile Include="app\connector.ts" />
+    <TypeScriptCompile Include="gl\GlobalInit.ts" />
     <TypeScriptCompile Include="handles\paySave.ts" />
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
+    <TypeScriptCompile Include="gl\TimeUtil.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
     <Folder Include="cfgs\" />
     <Folder Include="handles\" />
+    <Folder Include="gl\" />
     <Folder Include="Scripts\" />
     <Folder Include="Scripts\typings\" />
     <Folder Include="Scripts\typings\node\" />

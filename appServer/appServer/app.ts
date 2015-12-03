@@ -1,4 +1,5 @@
-﻿var connector = require("./app/connector.js");
+﻿require("./gl/GlobalInit");
+var connector = require("./app/connector.js");
 var config = require("./cfgs/config.json");
 
 const server = new connector();
