@@ -12,7 +12,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>1881ea57-d767-4e44-8c93-b9f70ebdc6a8</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>app.ts</StartupFile>
+    <StartupFile>test\test.ts</StartupFile>
     <StartWebBrowser>False</StartWebBrowser>
     <SearchPath>
     </SearchPath>
@@ -35,6 +35,7 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="test\ReadMe.txt" />
     <TypeScriptCompile Include="app.ts" />
     <Content Include="cfgs\config.json" />
     <Content Include="cfgs\config.sample.json" />
@@ -46,12 +47,14 @@
     <TypeScriptCompile Include="handles\paySave.ts" />
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
     <TypeScriptCompile Include="gl\TimeUtil.ts" />
+    <TypeScriptCompile Include="test\test.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
     <Folder Include="cfgs\" />
     <Folder Include="handles\" />
     <Folder Include="gl\" />
+    <Folder Include="test\" />
     <Folder Include="Scripts\" />
     <Folder Include="Scripts\typings\" />
     <Folder Include="Scripts\typings\node\" />
