@@ -4,6 +4,10 @@ var autorequire;
     (function (gl) {
         var TimeUtil;
         (function (TimeUtil) {
+            /**
+             * 返回当前时间的毫秒数
+             * @returns {}
+             */
             function getTimeStampMs() {
                 return Date.now();
             }

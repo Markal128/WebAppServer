@@ -4,9 +4,10 @@ var sysModule = require("module");
 var oldWrapperFunc = sysModule.wrap;
 // 设置文件目录路径
 var appBaseDir = pathNodeJS.dirname(__dirname);
+var appAppDir = pathNodeJS.dirname(__dirname) + "/app/";
+var appCfgsDir = pathNodeJS.dirname(__dirname) + "/cfgs/";
 var appGLDir = pathNodeJS.dirname(__dirname) + "/gl/";
 var appHandlesDir = pathNodeJS.dirname(__dirname) + "/handles/";
-var appCfgsDir = pathNodeJS.dirname(__dirname) + "/cfgs/";
 /**
  * 需要替换的头文件的内容
  * @param content
@@ -42,25 +43,37 @@ function publishGlobal() {
  * @returns {}
  */
 function replaceGlDir() {
-    sysModule.wrap = function (script) { return wrapperGlFile(script); };
     var glAllFiles = [];
-    readArrayFromFilePath(appBaseDir, glAllFiles, ".js");
+    readArrayFromFilePath(appGLDir, glAllFiles, ".js");
     glAllFiles.forEach(function (item) {
         require(item);
     });
     publishGlobal();
-    sysModule.wrap = oldWrapperFunc;
+}
+function replaceFilePathDir(filepath) {
+    var allFiles = [];
+    readArrayFromFilePath(filepath, allFiles, ".js");
+    allFiles.forEach(function (item) {
+        require(item);
+    });
 }
 global["autorequire"] = {};
 global["appBaseDir"] = appBaseDir;
+global["appAppDir"] = appAppDir;
 global["appGLDir"] = appGLDir;
 global["appHandlesDir"] = appHandlesDir;
 global["appCfgsDir"] = appCfgsDir;
 function beforeAllProcess() {
+    sysModule.wrap = function (script) { return wrapperGlFile(script); };
     // 调用gl替换函数
     replaceGlDir();
+    // app 目录
+    replaceFilePathDir(appAppDir);
+    // handles 目录
+    replaceFilePathDir(appHandlesDir);
 }
 function afterAllProcess() {
+    sysModule.wrap = oldWrapperFunc;
 }
 // 流程前准备
 beforeAllProcess();
