@@ -4,7 +4,7 @@ import util = require("util");
 const express = require("express");
 const bodyParser = require("body-parser");
 
-module app.connector {
+module autorequire.connector {
 
     export class Connector extends Events.EventEmitter {
         private server: any;

@@ -1,8 +1,8 @@
-﻿module app.gl.TimeUtil {
+﻿module autorequire.gl.TimeUtil {
     
     export function getTimeStampMs(): number {
         return Date.now();
     }
 }
 
-var TimeUtil = app.gl.TimeUtil;
+var TimeUtil = autorequire.gl.TimeUtil;

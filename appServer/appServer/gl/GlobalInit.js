@@ -13,7 +13,7 @@ var appCfgsDir = pathNodeJS.dirname(__dirname) + "/cfgs/";
  * @returns {}
  */
 function wrapperGlFile(content) {
-    return "(function (exports, require, module, __filename, __dirname) {var app = global[\"app\"];" + content + "\n});";
+    return "(function (exports, require, module, __filename, __dirname) {var autorequire = global[\"autorequire\"];" + content + "\n});";
 }
 function readArrayFromFilePath(filePath, fileList, ext) {
     var dirList = fsNodeJS.readdirSync(filePath);
@@ -30,8 +30,8 @@ function readArrayFromFilePath(filePath, fileList, ext) {
     });
 }
 function publishGlobal() {
-    if (app.gl) {
-        var allGl = app.gl;
+    if (autorequire.gl) {
+        var allGl = autorequire.gl;
         for (var key in allGl) {
             global[key] = allGl[key];
         }
@@ -44,18 +44,26 @@ function publishGlobal() {
 function replaceGlDir() {
     sysModule.wrap = function (script) { return wrapperGlFile(script); };
     var glAllFiles = [];
-    readArrayFromFilePath(appGLDir, glAllFiles, ".js");
+    readArrayFromFilePath(appBaseDir, glAllFiles, ".js");
     glAllFiles.forEach(function (item) {
         require(item);
     });
     publishGlobal();
     sysModule.wrap = oldWrapperFunc;
 }
-global["app"] = {};
+global["autorequire"] = {};
 global["appBaseDir"] = appBaseDir;
 global["appGLDir"] = appGLDir;
 global["appHandlesDir"] = appHandlesDir;
 global["appCfgsDir"] = appCfgsDir;
-// 调用gl替换函数
-replaceGlDir();
+function beforeAllProcess() {
+    // 调用gl替换函数
+    replaceGlDir();
+}
+function afterAllProcess() {
+}
+// 流程前准备
+beforeAllProcess();
+// 流程后
+afterAllProcess();
 //# sourceMappingURL=GlobalInit.js.map

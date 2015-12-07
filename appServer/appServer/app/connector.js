@@ -8,8 +8,8 @@ var fs = require("fs");
 var util = require("util");
 var express = require("express");
 var bodyParser = require("body-parser");
-var app;
-(function (app) {
+var autorequire;
+(function (autorequire) {
     var connector;
     (function (connector) {
         var Connector = (function (_super) {
@@ -187,6 +187,6 @@ var app;
         (module).exports = function () {
             return new Connector();
         };
-    })(connector = app.connector || (app.connector = {}));
-})(app || (app = {}));
+    })(connector = autorequire.connector || (autorequire.connector = {}));
+})(autorequire || (autorequire = {}));
 //# sourceMappingURL=connector.js.map

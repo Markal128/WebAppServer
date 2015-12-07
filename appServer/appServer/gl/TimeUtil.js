@@ -1,5 +1,5 @@
-var app;
-(function (app) {
+var autorequire;
+(function (autorequire) {
     var gl;
     (function (gl) {
         var TimeUtil;
@@ -9,7 +9,7 @@ var app;
             }
             TimeUtil.getTimeStampMs = getTimeStampMs;
         })(TimeUtil = gl.TimeUtil || (gl.TimeUtil = {}));
-    })(gl = app.gl || (app.gl = {}));
-})(app || (app = {}));
-var TimeUtil = app.gl.TimeUtil;
+    })(gl = autorequire.gl || (autorequire.gl = {}));
+})(autorequire || (autorequire = {}));
+var TimeUtil = autorequire.gl.TimeUtil;
 //# sourceMappingURL=TimeUtil.js.map
