@@ -43,7 +43,9 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <TypeScriptCompile Include="app\connector.ts" />
+    <TypeScriptCompile Include="gl\DummyUtil.ts" />
     <TypeScriptCompile Include="gl\GlobalInit.ts" />
+    <TypeScriptCompile Include="gl\MathUtil.ts" />
     <TypeScriptCompile Include="handles\paySave.ts" />
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
     <TypeScriptCompile Include="gl\TimeUtil.ts" />
