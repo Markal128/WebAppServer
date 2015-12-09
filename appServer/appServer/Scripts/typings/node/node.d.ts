@@ -196,6 +196,12 @@ declare module NodeJS {
     }
 }
 
+interface String {
+    contains(str: string): boolean;
+    endWith(str: string): boolean;
+    startWith(str: string): boolean;
+}
+
 /**
  * @deprecated
  */

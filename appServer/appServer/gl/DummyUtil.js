@@ -20,6 +20,14 @@ var autorequire;
                 return (typeof obj === "undefined" || obj === null);
             }
             DummyUtil.isNullOrUndefined = isNullOrUndefined;
+            function isNull(obj) {
+                return obj === null;
+            }
+            DummyUtil.isNull = isNull;
+            function isUndefined(obj) {
+                return typeof obj === "undefined";
+            }
+            DummyUtil.isUndefined = isUndefined;
             function isFunction(obj) {
                 return (typeof obj === "function");
             }

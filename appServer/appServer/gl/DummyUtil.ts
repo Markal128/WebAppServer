@@ -16,6 +16,14 @@
         return (typeof obj === "undefined" || obj === null);
     }
 
+    export function isNull(obj: any) {
+        return obj === null;
+    }
+
+    export function isUndefined(obj: any) {
+        return typeof obj === "undefined";
+    }
+
     export function isFunction(obj: any) {
         return (typeof obj === "function");
     }

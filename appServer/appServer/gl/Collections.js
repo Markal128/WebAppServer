@@ -4,13 +4,36 @@ var autorequire;
     (function (gl) {
         var collections;
         (function (collections) {
+            function parseHashKey(key) {
+                return "";
+            }
+            collections.parseHashKey = parseHashKey;
+            function parseHashValue(key, value) {
+                if (key.startWith("$n")) {
+                    return parseInt(key.substring(2));
+                }
+                else if (key.startWith("$s")) {
+                    return key.substring(2);
+                }
+                else if (key.startWith("$o")) {
+                    return value;
+                }
+            }
+            collections.parseHashValue = parseHashValue;
             var HashMap = (function () {
                 function HashMap() {
+                    this.table = {};
+                    this.nElements = 0;
                 }
                 HashMap.prototype.get = function (key) {
                     return this.get(key);
                 };
                 HashMap.prototype.put = function (key, value) {
+                    if (gl.DummyUtil.isUndefined(key) && gl.DummyUtil.isUndefined(value)) {
+                        return undefined;
+                    }
+                    var ret;
+                    return ret;
                 };
                 HashMap.prototype.remove = function (key) {
                     return this.get(key);
