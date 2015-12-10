@@ -44,6 +44,14 @@ var autorequire;
                 return (Object.prototype.toString.call(obj) === "[object Date]");
             }
             DummyUtil.isDate = isDate;
+            function randomIntInN(n) {
+                if (!DummyUtil.isNumber(n)) {
+                    throw new Error("randomIntInN n must be number");
+                    return null;
+                }
+                return Math.floor(Math.random() * (n + 1));
+            }
+            DummyUtil.randomIntInN = randomIntInN;
         })(DummyUtil = gl.DummyUtil || (gl.DummyUtil = {}));
     })(gl = autorequire.gl || (autorequire.gl = {}));
 })(autorequire || (autorequire = {}));

@@ -40,6 +40,13 @@
         return (Object.prototype.toString.call(obj) === "[object Date]");
     }
 
+    export function randomIntInN(n: number) {
+        if (!DummyUtil.isNumber(n)) {
+            throw new Error("randomIntInN n must be number");
+            return null;
+        }
+        return Math.floor(Math.random() * (n + 1));
+    }
 }
 
 var DummyUtil = autorequire.gl.DummyUtil;
