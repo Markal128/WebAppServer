@@ -58,6 +58,11 @@ declare var SlowBuffer: {
     concat(list: Buffer[], totalLength?: number): Buffer;
 };
 
+interface String {
+    contains(str: string): boolean;
+    endWith(str: string): boolean;
+    startWith(str: string): boolean;
+}
 
 // Buffer class
 interface Buffer extends NodeBuffer { }
@@ -194,12 +199,6 @@ declare module NodeJS {
         ref(): void;
         unref(): void;
     }
-}
-
-interface String {
-    contains(str: string): boolean;
-    endWith(str: string): boolean;
-    startWith(str: string): boolean;
 }
 
 /**

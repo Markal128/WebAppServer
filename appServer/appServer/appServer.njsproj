@@ -43,6 +43,7 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <TypeScriptCompile Include="app\connector.ts" />
+    <TypeScriptCompile Include="gl\Collections.ts" />
     <TypeScriptCompile Include="gl\DummyUtil.ts" />
     <TypeScriptCompile Include="gl\GlobalInit.ts" />
     <TypeScriptCompile Include="gl\MathUtil.ts" />
