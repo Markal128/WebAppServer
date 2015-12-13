@@ -19,6 +19,19 @@
     }
 
     export function parseHashKey(key: any): string {
+        if(DummyUtil.isNumber(key)) {
+            return "$n" + key;
+        } else if(DummyUtil.isString(key)) {
+            return "$s" + key;
+        } else if(DummyUtil.isUndefined(key)) {
+            return "$undefined";
+        } else if(DummyUtil.isNull(key)) {
+            return "$null";
+        } else {
+            if(DummyUtil.isFunction(key.hashKey)) {
+                
+            }
+        }
         return "";
     }
 
