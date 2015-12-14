@@ -73,6 +73,9 @@ global["appGLDir"] = appGLDir;
 global["appHandlesDir"] = appHandlesDir;
 global["appCfgsDir"] = appCfgsDir;
 
+//为自动hash处理
+var __hashgen__: number;
+global["__hashgen__"] = 0;
 
 function beforeAllProcess() {
     sysModule.wrap = (script: string) => wrapperGlFile(script);

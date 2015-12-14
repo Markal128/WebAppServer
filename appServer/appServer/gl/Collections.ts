@@ -18,6 +18,19 @@
         isEmpty(): boolean;
     }
 
+    
+
+    function generateAutoHash(obj: any) {
+        const hashValue = obj.__hash__;
+        if (hashValue) {
+            return;
+        }
+        
+        Object.defineProperty(obj, "__hash__", {
+            value: `$o__hash__${++global["__hashgen__"]}`
+        });
+    }
+
     export function parseHashKey(key: any): string {
         if(DummyUtil.isNumber(key)) {
             return "$n" + key;
@@ -28,19 +41,29 @@
         } else if(DummyUtil.isNull(key)) {
             return "$null";
         } else {
-            if(DummyUtil.isFunction(key.hashKey)) {
-                
+            if (DummyUtil.isFunction(key.hashKey)) {
+                return "$o" + key.hashKey();
+            } else {
+                generateAutoHash(key);
+                return key.__hash__;
             }
         }
-        return "";
     }
 
-    export function parseHashValue(key: string, value: any): any {
+    export function parseMapKey(key: string, value: any): any {
         if (key.startWith("$n")) {          // 整数
             return parseInt(key.substring(2));
         } else if (key.startWith("$s")) {   // 字符串
             return key.substring(2);
         } else if (key.startWith("$o")) {   // 对象
+            return value;
+        }
+    }
+
+    export function parseMapValue(khash: string, value: any): any {
+        if (khash.startWith("$o")) {
+            return value.value;
+        } else {
             return value;
         }
     }

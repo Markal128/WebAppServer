@@ -4,11 +4,40 @@ var autorequire;
     (function (gl) {
         var collections;
         (function (collections) {
+            function generateAutoHash(obj) {
+                var hashValue = obj.__hash__;
+                if (hashValue) {
+                    return;
+                }
+                Object.defineProperty(obj, "__hash__", {
+                    value: "$o__hash__" + ++global["__hashgen__"]
+                });
+            }
             function parseHashKey(key) {
-                return "";
+                if (gl.DummyUtil.isNumber(key)) {
+                    return "$n" + key;
+                }
+                else if (gl.DummyUtil.isString(key)) {
+                    return "$s" + key;
+                }
+                else if (gl.DummyUtil.isUndefined(key)) {
+                    return "$undefined";
+                }
+                else if (gl.DummyUtil.isNull(key)) {
+                    return "$null";
+                }
+                else {
+                    if (gl.DummyUtil.isFunction(key.hashKey)) {
+                        return "$o" + key.hashKey();
+                    }
+                    else {
+                        generateAutoHash(key);
+                        return key.__hash__;
+                    }
+                }
             }
             collections.parseHashKey = parseHashKey;
-            function parseHashValue(key, value) {
+            function parseMapKey(key, value) {
                 if (key.startWith("$n")) {
                     return parseInt(key.substring(2));
                 }
@@ -19,7 +48,16 @@ var autorequire;
                     return value;
                 }
             }
-            collections.parseHashValue = parseHashValue;
+            collections.parseMapKey = parseMapKey;
+            function parseMapValue(khash, value) {
+                if (khash.startWith("$o")) {
+                    return value.value;
+                }
+                else {
+                    return value;
+                }
+            }
+            collections.parseMapValue = parseMapValue;
             var HashMap = (function () {
                 function HashMap() {
                     this.table = {};
